@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $("#username").blur(function () {
+            $(this).get("checkUsername", {"username": $("#username").val()}, function (data) {
+                // {"userExist":true,"msg":"太受欢迎"}
+                // {"userExist":false,"msg":"欢迎注册"}
+                if(data.userExist){
+                    $("#s_username").css("color","red");
+                    $("#s_username").html(data.msg);
+                }else{
+                    $("#s_username").css("color","green");
+                    $("#s_username").html(data.msg);
+                }
+            })
+        })
+    });
+</script>
+<body>
+<form>
+    <input type="text" name="username" placeholder="请输入用户名" id="username">
+    <span id="s_username"></span><br>
+    <input type="submit">
+</form>
+</body>
+</html>

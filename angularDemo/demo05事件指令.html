@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件指令</title>
+</head>
+<script src="angular/angular.min.js"></script>
+<script>
+    // 创建一个模块 参数1 模块的名称， 参数2 引入其他的模块进行依赖
+    // 创建了一个名称为appdemo的app模块
+    var app = angular.module("appdemo", []);
+    app.controller("appController", function ($scope) {
+        $scope.listNumber=[123,234,345,456];
+    })
+
+</script>
+
+<body ng-app="appdemo" ng-controller="appController">
+
+<table>
+    <tr ng-repeat="num in listNumber">
+        <td>{{num}}</td>
+    </tr>
+</table>
+</body>
+</html>
